@@ -50,9 +50,11 @@ String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String 
 		effectiveSpecial = a;
 	}
 	if (effectiveSpecial.contains("creature")) {
-        //printf("BE: Contain creature ");
-        //effectiveSpecial = "defaultattack";
+        printf("BE: Contain creature ");
+        effectiveSpecial = "defaultattack";
 	}
+
+	return a;
 
 	int roll = System::random(750);
 	// roll now determined by template quality
