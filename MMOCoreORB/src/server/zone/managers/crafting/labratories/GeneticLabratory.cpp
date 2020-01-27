@@ -24,6 +24,7 @@ String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String 
 	String effectiveSpecial = "defaultattack";
     printf("BE: Spe attack");
 	cout << "BE: Spe attack " << a << std::endl
+	printf("BE: Spe attack %s\n", (LPCSTR) a)
 	// if no special was found in the first passed in slot pick one at random
 	if (a.isEmpty() || a == otherSpecial) {
 		int rand = System::random(3);
