@@ -22,8 +22,9 @@ GeneticLabratory::~GeneticLabratory() {
 
 String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String d, String e, int odds, String otherSpecial) {
 	String effectiveSpecial = "defaultattack";
-	printf("BE: Spe attack a:%s\n", a.toCharArray());
-	//printf("BE: Spe attack a:%s b:%s c:%s d:%s e:%s\n", a.toString(), b.toString(), c.toString(), d.toString(), e.toString());
+	//printf("BE: Spe attack a:%s\n", a.toCharArray());
+	printf("BE: Spe attack a:%s b:%s c:%s d:%s e:%s odds:%d otherSpecial:%s\n", a.toCharArray(), b.toCharArray(), c.toCharArray(),
+		d.toCharArray(), e.toCharArray(), odds, otherSpecial.toCharArray());
 	// if no special was found in the first passed in slot pick one at random
 	if (a.isEmpty() || a == otherSpecial) {
 		int rand = System::random(3);
@@ -49,8 +50,8 @@ String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String 
 		effectiveSpecial = a;
 	}
 	if (effectiveSpecial.contains("creature")) {
-        printf("BE: Contain creature ");
-        effectiveSpecial = "defaultattack";
+        //printf("BE: Contain creature ");
+        //effectiveSpecial = "defaultattack";
 	}
 
 	int roll = System::random(750);
