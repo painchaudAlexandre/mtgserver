@@ -98,7 +98,8 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int qu
 	int cl = deed->getLevel();
 	int ferocity = 0; // 1 highest 7 lowest
 	int factor = (int)System::random(quality) - 7;
-	int reductionAmount = (factor + 15 + quality) ;
+	//int reductionAmount = (factor + 15 + quality) ;
+    int reductionAmount = 0;
 	int cle = reduceByPercent(deed->getCleverness(),reductionAmount);
 	int cou = reduceByPercent(deed->getCourage(),reductionAmount);
 	int dep = reduceByPercent(deed->getDependency(),reductionAmount);
