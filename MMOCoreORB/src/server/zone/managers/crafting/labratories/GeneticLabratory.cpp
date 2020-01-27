@@ -12,6 +12,7 @@
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
+#include "engine/log/Logger.h"
 
 GeneticLabratory::GeneticLabratory() {
 }
@@ -21,6 +22,7 @@ GeneticLabratory::~GeneticLabratory() {
 
 String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String d, String e, int odds, String otherSpecial) {
 	String effectiveSpecial = "defaultattack";
+    debug("BE: Spe attack  " << a);
 	// if no special was found in the first passed in slot pick one at random
 	if (a.isEmpty() || a == otherSpecial) {
 		int rand = System::random(3);
@@ -38,24 +40,31 @@ String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String 
 				effectiveSpecial = e;
 				break;
 			default:
+                debug("BE: Default on Random ");
 				effectiveSpecial = "defaultattack";
 				break;
 		}
 	} else {
 		effectiveSpecial = a;
 	}
-	if (effectiveSpecial.contains("creature"))
-		effectiveSpecial = "defaultattack";
+	if (effectiveSpecial.contains("creature")) {
+        debug("BE: Contain creature ");
+        effectiveSpecial = "defaultattack";
+	}
+
 	int roll = System::random(750);
 	// roll now determined by template quality
 	// we roll 0-800 if that number is < quality * 100 i.e. VHQ 100 VLQ 700 if we get less than the odds we dont stick the special
 	// VLQ has a 7% chance to stick a special VHQ has 87% chance to stick it
 	if (roll < odds ) {
+        debug("BE: ROLL FAILED");
 		effectiveSpecial = "defaultattack";
 	}
-	if (effectiveSpecial == otherSpecial && effectiveSpecial != "defaultattack")
-		effectiveSpecial = pickSpecialAttack(effectiveSpecial,b,c,d,e,odds+100,otherSpecial);// pick another default mantis #5598 max loop count is 8 (i.e. odds starting at 100, at 8 calls it picks defaultattack
-	return effectiveSpecial;
+	if (effectiveSpecial == otherSpecial && effectiveSpecial != "defaultattack") {
+        debug("BE: Pick on more");
+        effectiveSpecial = pickSpecialAttack(effectiveSpecial,b,c,d,e,odds+100,otherSpecial);// pick another default mantis #5598 max loop count is 8 (i.e. odds starting at 100, at 8 calls it picks defaultattack
+	}
+		return effectiveSpecial;
 }
 void GeneticLabratory::recalculateResist(CraftingValues* craftingValues) {
 	String experimentalPropTitle, attributeName;
