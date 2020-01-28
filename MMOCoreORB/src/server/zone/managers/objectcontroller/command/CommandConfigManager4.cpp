@@ -43,6 +43,7 @@
 
 #include "CommandConfigManager.h"
 
+#include "server/zone/objects/creature/commands/MergeResourcesInInventoryCommand.h"
 #include "server/zone/objects/creature/commands/SuppressionFire1Command.h"
 #include "server/zone/objects/creature/commands/SuppressionFire2Command.h"
 #include "server/zone/objects/creature/commands/SurpriseShotCommand.h"
@@ -269,6 +270,7 @@ void CommandConfigManager::registerCommands4() {
 	commandFactory.registerCommand<WookieeRoarCommand>(String("wookieeRoar").toLowerCase());
 
 	commandFactory.registerCommand<CityInfoCommand>(String("cityInfo").toLowerCase());
+	#commandFactory.registerCommand<CityInfoCommand>(String("cityInfo").toLowerCase());
 	commandFactory.registerCommand<GroupLootCommand>(String("groupLoot").toLowerCase());
 	commandFactory.registerCommand<OpenLotteryContainerCommand>(String("openLotteryContainer").toLowerCase());
 	commandFactory.registerCommand<CloseLotteryContainerCommand>(String("closeLotteryContainer").toLowerCase());

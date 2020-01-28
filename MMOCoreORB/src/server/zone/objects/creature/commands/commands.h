@@ -438,6 +438,8 @@
 #include "Melee2hSpinAttack2Command.h"
 #include "Melee2hSweep1Command.h"
 #include "Melee2hSweep2Command.h"
+#include "MergeResourcesInHouseCommand.h"
+#include "MergeResourcesInInventoryCommand.h"
 #include "MildDiseaseCommand.h"
 #include "MildPoisonCommand.h"
 #include "MindBlast1Command.h"
