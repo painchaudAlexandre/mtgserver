@@ -2,3 +2,6 @@ MMOEngine
 luacov.report.out
 luacov.stats.out
 .vs
+MMOCoreORB/EMUTEST.*
+out
+Debug
