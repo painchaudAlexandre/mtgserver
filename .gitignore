@@ -2,9 +2,6 @@ MMOEngine
 luacov.report.out
 luacov.stats.out
 .vs
-MMOCoreORB/EMUTEST.vcxproj
-MMOCoreORB/EMUTEST.sln
-MMOCoreORB/EMUTEST.vcxproj.filters
-MMOCoreORB/EMUTEST.vcxproj.user
-MMOCoreORB/Debug/EMUTEST.vcxprojAssemblyReference.cache
-MMOCoreORB/Debug/EMUTEST.log
+MMOCoreORB/EMUTEST.*
+MMOCoreORB/Debug
+MMOCoreORB/out
