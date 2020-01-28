@@ -145,9 +145,9 @@ int SharedLabratory::calculateAssemblySuccess(CreatureObject* player,DraftSchema
 	float cityBonus = player->getSkillMod("private_spec_assembly");
 
 	int assemblySkill = player->getSkillMod(draftSchematic->getAssemblySkill());
-	printf("%s: assemblySkill=%d\n",__FILE__, player->getSkillMod(draftSchematic->getAssemblySkill());
+	printf("%s: assemblySkill=%d\n",__FILE__, player->getSkillMod(draftSchematic->getAssemblySkill()) );
 	assemblySkill += player->getSkillMod("force_assembly");
-	printf("%s: forceAssemblySkill=%d\n", __FILE__, player->getSkillMod(draftSchematic->getAssemblySkill());
+	printf("%s: forceAssemblySkill=%d\n", __FILE__, player->getSkillMod(draftSchematic->getAssemblySkill()) );
 
 	float assemblyPoints = ((float)assemblySkill) / 10.0f;
 	int failMitigate = (player->getSkillMod(draftSchematic->getAssemblySkill()) - 100 + cityBonus) / 7;
