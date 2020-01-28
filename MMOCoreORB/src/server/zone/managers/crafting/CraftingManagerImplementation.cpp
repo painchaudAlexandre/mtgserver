@@ -67,6 +67,7 @@ int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObjec
 
 	int experimentationSkill = player->getSkillMod(draftSchematic->getExperimentationSkill());
 	int forceSkill = player->getSkillMod("force_experimentation");
+	printf("%s: forceExperimentationSkill=%d\n", __FILE__, player->getSkillMod("force_experimentation") );
 	experimentationSkill += forceSkill;
 
 	float experimentingPoints = ((float)experimentationSkill) / 10.0f;
@@ -81,6 +82,7 @@ int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObjec
 
 	// 0.85-1.15
 	float toolModifier = 1.0f + (effectiveness / 100.0f);
+	printf("%s: toolModifier=%f\n", __FILE__, toolModifier);
 
 	//Bespin Port
 	float expbonus = 0;
@@ -90,6 +92,7 @@ int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObjec
 		if (buff != nullptr) {
 			expbonus = buff->getSkillModifierValue("experiment_bonus");
 			toolModifier *= 1.0f + (expbonus / 100.0f);
+			printf("%s: new toolModifier after food buff=%f\n", __FILE__, toolModifier);
 		}
 	}
 
