@@ -34,7 +34,7 @@ public:
 		if( house->isCellObject() )
 			house = house->getParent();
 
-		if ( house == NULL) {
+		if ( !house ) {
 			creature->sendSystemMessage("Unsupported type of building: " + house->getLoggingName() );
 			return GENERALERROR;
 		}
@@ -164,7 +164,7 @@ public:
 				String resSpawnName = lowCountRes->getSpawnName();
 				ManagedReference<ResourceContainer*> &highCountRes = resourceMap.get(resSpawnName);
 
-				if( highCountRes == NULL ){
+				if( !highCountRes ){
 					resourceMap.put(resSpawnName, lowCountRes);
 					continue;
 				}

@@ -44,6 +44,7 @@
 #include "CommandConfigManager.h"
 
 #include "server/zone/objects/creature/commands/MergeResourcesInInventoryCommand.h"
+#include "server/zone/objects/creature/commands/MergeResourcesInHouseCommand.h"
 #include "server/zone/objects/creature/commands/SuppressionFire1Command.h"
 #include "server/zone/objects/creature/commands/SuppressionFire2Command.h"
 #include "server/zone/objects/creature/commands/SurpriseShotCommand.h"
@@ -275,7 +276,8 @@ void CommandConfigManager::registerCommands4() {
 	commandFactory.registerCommand<OpenLotteryContainerCommand>(String("openLotteryContainer").toLowerCase());
 	commandFactory.registerCommand<CloseLotteryContainerCommand>(String("closeLotteryContainer").toLowerCase());
 	commandFactory.registerCommand<RequestQuestTimersAndCountersCommand>(String("requestQuestTimersAndCounters").toLowerCase());
-	commandFactory.registerCommand<EjectCommand>(String("eject").toLowerCase());
+	commandFactory.registerCommand<MergeResourcesInHouseCommand>(String("eject").toLowerCase());
+	//commandFactory.registerCommand<EjectCommand>(String("eject").toLowerCase());
 	commandFactory.registerCommand<LaunchIntoSpaceCommand>(String("launchIntoSpace").toLowerCase());
 	commandFactory.registerCommand<UnstickCommand>(String("unstick").toLowerCase());
 	commandFactory.registerCommand<WaypointCommand>(String("waypoint").toLowerCase());
