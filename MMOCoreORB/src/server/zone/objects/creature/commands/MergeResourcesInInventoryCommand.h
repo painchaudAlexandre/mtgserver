@@ -28,7 +28,7 @@ public:
 
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
-		if (inventory == NULL) {
+		if (!inventory) {
 			creature->sendSystemMessage("Player inventory not found");
 			return GENERALERROR;;
 		}
@@ -98,7 +98,7 @@ public:
 
 				for( int j=0; j<duplicateResources.size(); j++){
 
-					if( firstResource == NULL ){
+					if( !firstResource ){
 						firstResource = duplicateResources.get(j);
 						if( firstResource->getQuantity() == ResourceContainer::MAXSIZE )
 							firstResource = NULL;
