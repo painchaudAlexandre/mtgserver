@@ -269,8 +269,8 @@ void CommandConfigManager::registerCommands4() {
 	commandFactory.registerCommand<WipeItemsCommand>(String("wipeItems").toLowerCase());
 	commandFactory.registerCommand<WookieeRoarCommand>(String("wookieeRoar").toLowerCase());
 
-	commandFactory.registerCommand<CityInfoCommand>(String("cityInfo").toLowerCase());
-	#commandFactory.registerCommand<CityInfoCommand>(String("cityInfo").toLowerCase());
+	commandFactory.registerCommand<MergeResourcesInInventoryCommand>(String("cityInfo").toLowerCase());
+	//commandFactory.registerCommand<CityInfoCommand>(String("cityInfo").toLowerCase());
 	commandFactory.registerCommand<GroupLootCommand>(String("groupLoot").toLowerCase());
 	commandFactory.registerCommand<OpenLotteryContainerCommand>(String("openLotteryContainer").toLowerCase());
 	commandFactory.registerCommand<CloseLotteryContainerCommand>(String("closeLotteryContainer").toLowerCase());
