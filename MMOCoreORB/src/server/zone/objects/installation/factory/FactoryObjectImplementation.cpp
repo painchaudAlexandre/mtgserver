@@ -99,7 +99,7 @@ void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, C
 			alm->insertAttribute("manufacture_object", prototype->getDisplayedName());
 		}
 
-		alm->insertAttribute("manufacture_time", timer);
+		alm->insertAttribute("manufacture_time", 2000);
 
 		ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 
@@ -424,7 +424,7 @@ bool FactoryObjectImplementation::startFactory() {
 
 	// Add sampletask
 	Reference<CreateFactoryObjectTask* > createFactoryObjectTask = new CreateFactoryObjectTask(_this.getReferenceUnsafeStaticCast());
-	addPendingTask("createFactoryObject", createFactoryObjectTask, timer * 1000);
+	addPendingTask("createFactoryObject", createFactoryObjectTask, 2000);
 
 	operating = true;
 
@@ -605,7 +605,7 @@ void FactoryObjectImplementation::createNewObject() {
 	Reference<Task*> pending = getPendingTask("createFactoryObject");
 
 	if (pending != nullptr)
-		pending->reschedule(timer * 1000);
+		pending->reschedule(2000);
 	else
 		stopFactory("manf_error", "", "", -1);
 }
