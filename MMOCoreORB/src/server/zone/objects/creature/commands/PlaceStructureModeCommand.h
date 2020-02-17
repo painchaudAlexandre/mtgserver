@@ -69,12 +69,12 @@ public:
 
 		int lots = serverTemplate->getLotSize();
 
-		if (!ghost->hasLotsRemaining(lots)) {
-			StringIdChatParameter param("@player_structure:not_enough_lots");
-			param.setDI(lots);
-			creature->sendSystemMessage(param);
-			return GENERALERROR;
-		}
+		//if (!ghost->hasLotsRemaining(lots)) {
+		//	StringIdChatParameter param("@player_structure:not_enough_lots");
+		//	param.setDI(lots);
+		//	creature->sendSystemMessage(param);
+		//	return GENERALERROR;
+		//}
 
 		String clientTemplatePath = templateManager->getTemplateFile(serverTemplate->getClientObjectCRC());
 
