@@ -426,12 +426,12 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature, Structure
 
 		int lots = serverTemplate->getLotSize();
 
-		if (!ghost->hasLotsRemaining(lots)) {
-			StringIdChatParameter param("@player_structure:not_enough_lots");
-			param.setDI(lots);
-			creature->sendSystemMessage(param);
-			return 1;
-		}
+		//if (!ghost->hasLotsRemaining(lots)) {
+		//	StringIdChatParameter param("@player_structure:not_enough_lots");
+		//	param.setDI(lots);
+		//	creature->sendSystemMessage(param);
+		//	return 1;
+		//}
 	}
 
 	//Validate that the structure can be placed at the given coordinates:
