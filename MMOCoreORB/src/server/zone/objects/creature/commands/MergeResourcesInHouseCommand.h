@@ -4,19 +4,57 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "engine/core/ManagedReference.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/SentinelsRepublic/SRResourceHelper.h"
+
+
+using namespace server::SRResourceHelper;
 
 class MergeResourcesInHouseCommand : public QueueCommand {
 public:
 
 	MergeResourcesInHouseCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
-
 	}
+
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
+
+        if (!checkStateMask(creature)) {
+            creature->sendSystemMessage("Error: you cannot do that when you are dead or in combat");
+            return INVALIDSTATE;
+        }
+
+        if (!checkInvalidLocomotions(creature)) {
+            creature->sendSystemMessage("Error: you cannot do that while traveling or riding a mount");
+            return INVALIDLOCOMOTION;
+        }
+
+		int count_res_before, count_res_containers;
+
+		//ManagedReference<CreatureObject*> creature_ref = creature;
+
+		if( !count_resources_in_player_inventory(creature, count_res_before, count_res_containers) ){
+            creature->sendSystemMessage("Error: unable to count resources in your inventory. Please contact a CSR if problem persists");
+            return GENERALERROR;
+		}
+
+
+
+        if ( creature->getParent() == nullptr) {
+            creature->sendSystemMessage("You cannot run this command from outside");
+            return GENERALERROR;
+        }
+
+
+
+        return SUCCESS;
+	}
+
 
 	/**
 	 * this function will look into player inventory and merge resource with same name together
 	 */
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
+	int doQueueCommandOld(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;

@@ -53,6 +53,9 @@ set_target_properties(idlobjects PROPERTIES LINKER_LANGUAGE CXX)
 file(GLOB_RECURSE zone3_sources "server/zone/*.cpp")
 file(GLOB_RECURSE zone3_headers "server/zone/*.h")
 
+file(GLOB_RECURSE srhelpers_sources "server/SentinelsRepublic/*.cpp")
+file(GLOB_RECURSE srhelpers_headers "server/SentinelsRepublic/*.h")
+
 file(GLOB_RECURSE tre3_sources "tre3/*.cpp")
 file(GLOB_RECURSE tre3_headers "tre3/*.h")
 
@@ -83,10 +86,10 @@ if(COMPILE_TESTS)
 endif(COMPILE_TESTS)
 
 # Create core3 binary
-add_executable(core3 main.cpp server/ServerCore.cpp ${core3tests_libs} ${tre3_sources} ${tre3_headers} ${zone3_sources} ${zone3_headers})
+add_executable(core3 main.cpp server/ServerCore.cpp ${core3tests_libs} ${tre3_sources} ${tre3_headers} ${zone3_sources} ${zone3_headers} ${srhelpers_sources} ${srhelpers_headers})
 
 if(ENABLE_ODB)
-	add_executable(odb3 server/ServerCore.cpp ${odb3_sources} ${odb3_headers} ${autogen_sources} ${autogen_headers} ${zone3_sources} ${zone3_headers}
+	add_executable(odb3 server/ServerCore.cpp ${odb3_sources} ${odb3_headers} ${autogen_sources} ${autogen_headers} ${zone3_sources} ${zone3_headers} ${srhelpers_sources} ${srhelpers_headers}
 		${tre3_sources} ${tre3_headers} ${odb_internals} ${odb_internals_h} ${tests_sources})
 	target_compile_definitions(odb3 PUBLIC -DODB_SERIALIZATION)
 endif(ENABLE_ODB)

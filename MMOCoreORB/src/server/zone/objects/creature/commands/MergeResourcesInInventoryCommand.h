@@ -4,6 +4,8 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "engine/core/ManagedReference.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
 class MergeResourcesInInventoryCommand : public QueueCommand {
 public:
@@ -19,10 +21,10 @@ public:
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
-					return INVALIDSTATE;
+			return INVALIDSTATE;
 
-				if (!checkInvalidLocomotions(creature))
-					return INVALIDLOCOMOTION;
+		if (!checkInvalidLocomotions(creature))
+			return INVALIDLOCOMOTION;
 
 		creature->sendSystemMessage("Requested inventory resources merge");
 
